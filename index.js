@@ -6,17 +6,12 @@ module.exports = (app) => {
   // Your code here
   app.log.info("Yay, the app was loaded!");
 
-  app.on("star", async (context) => {
+  app.on("star.created", async (context) => {
+    console.log('HERE IS THIS WORKING')
     return context.octokit.rest.issues.create({
       owner: 'gcodehouse',
       repo: 'automation-invite',
-      title: 'This issue was opened',
+      title: 'this issue was opened by probot',
     });
   });
-
-  // For more information on building apps:
-  // https://probot.github.io/docs/
-
-  // To get your app running against GitHub, see:
-  // https://probot.github.io/docs/development/
-};
+}
