@@ -6,11 +6,12 @@ module.exports = (app) => {
   // Your code here
   app.log.info("Yay, the app was loaded!");
 
-  app.on("issues.opened", async (context) => {
-    const issueComment = context.issue({
-      body: "Thanks for opening this issue!",
+  app.on("star", async (context) => {
+    return context.octokit.rest.issues.create({
+      owner: 'gcodehouse',
+      repo: 'automation-invite',
+      title: 'This issue was opened',
     });
-    return context.octokit.issues.createComment(issueComment);
   });
 
   // For more information on building apps:
