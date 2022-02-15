@@ -33,7 +33,7 @@ async function checkCommentBody(comment, octokit, context, pendingMaintainerUser
 async function addUserToTeam(pendingMaintainerUsername) {
     const octokit = new Octokit({
         // pass in GitHub personal access token
-        auth: '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',
+        auth: 'personal_access_token',
     });
     const result = await octokit.request('PUT /orgs/{org}/teams/{team_slug}/memberships/{pendingMaintainerUsername}', {
         org: 'gcodehouse',
