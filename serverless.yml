@@ -1,0 +1,21 @@
+ service: gcode-automation-invite
+
+ provider:
+   name: aws
+   runtime: nodejs14.x
+   region: us-east-1
+
+ functions:
+   router:
+     handler: handler.webhooks
+
+     environment:
+       WEBHOOK_SECRET: ${ssm:/WEBHOOKSECRET}
+       APP_ID: ${ssm:/APPID}
+       PRIVATE_KEY: ${ssm:/PRIVATEKEY}
+       LOG_FORMAT: json 
+
+     events:
+       - http:
+          path: /api/github/webhooks
+          method: post
