@@ -17,5 +17,5 @@
 
      events:
        - http:
-          path: /api/github/webhooks
+          path: /api/gcode/webhooks
           method: post
